@@ -1,0 +1,127 @@
+{
+  "projectId": "sitemap-indexer",
+  "projectName": "Sitemap-Indexer",
+  "databases": [
+    {
+      "$id": "66822a1b0013107744ac",
+      "name": "sitemap_indexer_db",
+      "$createdAt": "2024-07-01T04:01:32.420+00:00",
+      "$updatedAt": "2024-07-01T04:01:32.420+00:00",
+      "enabled": true
+    }
+  ],
+  "collections": [
+    {
+      "$id": "66822a35003da2e27147",
+      "$permissions": [],
+      "databaseId": "66822a1b0013107744ac",
+      "name": "site",
+      "enabled": true,
+      "documentSecurity": false,
+      "attributes": [
+        {
+          "key": "title",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "size": 49,
+          "default": null
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "format": "url",
+          "default": null
+        },
+        {
+          "key": "is_active",
+          "type": "boolean",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "default": false
+        },
+        {
+          "key": "sitemap",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "format": "url",
+          "default": null
+        },
+        {
+          "key": "google_key",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "size": 3000,
+          "default": null
+        },
+        {
+          "key": "indexed",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": true,
+          "format": "url",
+          "default": null
+        },
+        {
+          "key": "not_indexed",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": true,
+          "format": "url",
+          "default": null
+        }
+      ],
+      "indexes": []
+    }
+  ],
+  "functions": [
+    {
+      "$id": "668254bd78d1ba6537b0",
+      "name": "get-site-index",
+      "runtime": "python-3.9",
+      "execute": [],
+      "events": [],
+      "schedule": "",
+      "timeout": 60,
+      "enabled": true,
+      "logging": true,
+      "entrypoint": "src/main.py",
+      "commands": "pip install -r requirements.txt",
+      "ignore": ["__pypackages__", ".env", ".env.sample", "Makefile", "Pipfile", "Pipfile.lock"],
+      "path": "functions/get-site-index"
+    },
+    {
+      "$id": "66833488c84ed6f873a4",
+      "name": "google-index-update",
+      "runtime": "python-3.9",
+      "execute": [],
+      "events": [],
+      "schedule": "",
+      "timeout": 120,
+      "enabled": true,
+      "logging": true,
+      "entrypoint": "src/main.py",
+      "commands": "pip install -r requirements.txt",
+      "ignore": ["__pypackages__", ".env", ".env.sample", "Makefile", "Pipfile", "Pipfile.lock"],
+      "path": "functions/google-index-update"
+    }
+  ]
+}
